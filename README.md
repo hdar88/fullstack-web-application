@@ -40,7 +40,7 @@
     <br /> 
     <a href="https://github.com/hdar88/fullstack-web-application/issues/new?labels=bug">Report Bug</a>
     ·
-    <a href="https://github.com/hdar88/fullstack-web-application/issues">Request Feature</a>
+    <a href="https://github.com/hdar88/fullstack-web-application/issues/new?labels=enhancement">Request Feature</a>
   </p>
 </div>
 
