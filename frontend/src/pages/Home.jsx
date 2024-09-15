@@ -7,11 +7,27 @@ function Home() {
   const [notes, setNotes] = useState([]);
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
+  const [username, setUsername] = useState("");
+
+  // get user name of currently logged in user
+  useEffect(() => {
+    fetchCurrentUser();
+  }, []);
+
+  const fetchCurrentUser = async () => {
+    try {
+      const response = await api.get("/api/current-user/");
+      setUsername(response.data.username);
+    } catch (error) {
+      console.error("Error fetching current user:", error);
+    }
+  };
 
   useEffect(() => {
     getNotes();
   }, []);
 
+  // get notes of currently logged in user
   const getNotes = () => {
     api
       .get("/api/notes/")
@@ -23,6 +39,7 @@ function Home() {
       .catch((err) => alert(err));
   };
 
+  // delete specific note
   const deleteNote = (id) => {
     api
       .delete(`/api/notes/delete/${id}/`)
@@ -34,6 +51,7 @@ function Home() {
       .catch((error) => alert(error));
   };
 
+  // create note and set author to currently logged in user
   const createNote = (e) => {
     e.preventDefault();
     api
@@ -48,13 +66,20 @@ function Home() {
 
   return (
     <div>
+      <h1>Welcome, {username}</h1>
+
       <div>
-        <h2>Notes</h2>
-        {notes.map((note) => (
-          <Note note={note} onDelete={deleteNote} key={note.id} />
-        ))}
+        <h2>My Notes</h2>
+        <ul>
+          {notes.map((note) => (
+            <li key={note.id}>
+              <Note note={note} onDelete={deleteNote} />
+            </li>
+          ))}
+        </ul>
       </div>
-      <h2>Create a Note</h2>
+
+      <button>Create a Note</button>
       <form onSubmit={createNote}>
         <label htmlFor="title">Title:</label>
         <br />
@@ -76,7 +101,7 @@ function Home() {
           onChange={(e) => setContent(e.target.value)}
         ></textarea>
         <br />
-        <input type="submit" value="Submit"></input>
+        <input type="submit" value="Submit" />
       </form>
     </div>
   );
