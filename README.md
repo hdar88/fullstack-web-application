@@ -38,7 +38,7 @@
 
   <p align="center">
     <br /> 
-    <a href="https://github.com/hdar88/fullstack-web-application/issues">Report Bug</a>
+    <a href="https://github.com/hdar88/fullstack-web-application/issues/new?labels=bug&template=bug-report---.md)">Report Bug</a>
     ·
     <a href="https://github.com/hdar88/fullstack-web-application/issues">Request Feature</a>
   </p>
