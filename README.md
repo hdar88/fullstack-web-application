@@ -108,7 +108,7 @@ By building this project, I aim to enhance my skills in full-stack development a
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [![Python][Python]][Python-url]
+* [![Python][Python]][Python-url] ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)
 * [![React][React.js]][React-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
