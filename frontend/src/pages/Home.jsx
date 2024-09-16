@@ -69,7 +69,8 @@ function Home() {
       <h1>Welcome, {username}</h1>
 
       <div>
-        <h2>My Notes</h2>
+        <h2>Dashboard</h2>
+        <button className="create-button">Create a Note</button>
         <ul>
           {notes.map((note) => (
             <li key={note.id}>
@@ -79,7 +80,6 @@ function Home() {
         </ul>
       </div>
 
-      <button>Create a Note</button>
       <form onSubmit={createNote}>
         <label htmlFor="title">Title:</label>
         <br />
