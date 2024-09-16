@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import api from "../api";
 import Note from "../components/Note";
 import "../styles/Home.css";
+import Modal from "../components/CreateModal";
 
 function Home() {
   const [notes, setNotes] = useState([]);
@@ -64,13 +65,15 @@ function Home() {
       .catch((err) => alert(err));
   };
 
+  // handle create modal visibility
+  const toggleCreateModal = () => {};
+
   return (
     <div>
       <h1>Welcome, {username}</h1>
-
       <div>
         <h2>Dashboard</h2>
-        <button className="create-button">Create a Note</button>
+        <Modal></Modal>
         <ul>
           {notes.map((note) => (
             <li key={note.id}>
@@ -79,30 +82,6 @@ function Home() {
           ))}
         </ul>
       </div>
-
-      <form onSubmit={createNote}>
-        <label htmlFor="title">Title:</label>
-        <br />
-        <input
-          type="text"
-          id="title"
-          name="title"
-          required
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
-        />
-        <label htmlFor="content">Content:</label>
-        <br />
-        <textarea
-          id="content"
-          name="content"
-          required
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        ></textarea>
-        <br />
-        <input type="submit" value="Submit" />
-      </form>
     </div>
   );
 }
