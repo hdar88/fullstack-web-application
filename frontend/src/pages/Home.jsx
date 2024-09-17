@@ -38,7 +38,7 @@ function Home() {
       .catch((err) => alert(err));
   };
 
-  // delete specific note
+  // delete note with id
   const deleteNote = (id) => {
     api
       .delete(`/api/notes/delete/${id}/`)
@@ -47,7 +47,19 @@ function Home() {
         else alert("Oops, failed to delete this note.");
         getNotes();
       })
-      .catch((error) => alert(error));
+      .catch((error) => alert("Oops!An error occured."));
+  };
+
+  // edit note with id
+  const editNote = (id) => {
+    api
+      .put(`/api/notes/edit/${id}/`)
+      .then((res) => {
+        if (res.status === 204) alert("Yayy! Edited Note successfully!");
+        else alert("Oops, failed to edit this note.");
+        getNotes();
+      })
+      .catch((error) => alert("Oops!An error occured."));
   };
 
   return (
@@ -59,7 +71,7 @@ function Home() {
         <ul>
           {notes.map((note) => (
             <li key={note.id}>
-              <Note note={note} onDelete={deleteNote} />
+              <Note note={note} onDelete={deleteNote} onEdit={editNote} />
             </li>
           ))}
         </ul>

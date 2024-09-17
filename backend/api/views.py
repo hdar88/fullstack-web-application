@@ -44,3 +44,15 @@ class CurrentUserView(generics.RetrieveAPIView):
         return Response({
             "username": user.username
         })
+
+class NoteEdit(generics.UpdateAPIView):
+    serializer_class = NoteSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        return Note.objects.filter(author=user)
+    
+    def perform_update(self, serializer):
+        serializer.save(author=self.request.user)
+     
