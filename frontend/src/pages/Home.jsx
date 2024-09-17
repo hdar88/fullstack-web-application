@@ -2,12 +2,10 @@ import { useState, useEffect } from "react";
 import api from "../api";
 import Note from "../components/Note";
 import "../styles/Home.css";
-import Modal from "../components/CreateModal";
+import CreateNoteModal from "../components/CreateModal";
 
 function Home() {
   const [notes, setNotes] = useState([]);
-  const [content, setContent] = useState("");
-  const [title, setTitle] = useState("");
   const [username, setUsername] = useState("");
 
   // get user name of currently logged in user
@@ -24,11 +22,11 @@ function Home() {
     }
   };
 
+  // get notes of currently logged in user
   useEffect(() => {
     getNotes();
   }, []);
 
-  // get notes of currently logged in user
   const getNotes = () => {
     api
       .get("/api/notes/")
@@ -52,28 +50,12 @@ function Home() {
       .catch((error) => alert(error));
   };
 
-  // create note and set author to currently logged in user
-  const createNote = (e) => {
-    e.preventDefault();
-    api
-      .post("/api/notes/", { content, title })
-      .then((res) => {
-        if (res.status === 201) alert("Yayy! Created Note successfully!");
-        else alert("Oops, failed to create note.");
-        getNotes();
-      })
-      .catch((err) => alert(err));
-  };
-
-  // handle create modal visibility
-  const toggleCreateModal = () => {};
-
   return (
     <div>
       <h1>Welcome, {username}</h1>
       <div>
         <h2>Dashboard</h2>
-        <Modal></Modal>
+        <CreateNoteModal getNotes={getNotes}></CreateNoteModal>
         <ul>
           {notes.map((note) => (
             <li key={note.id}>
