@@ -11,6 +11,12 @@ function CreateNoteModal({ getNotes }) {
     setModal(!modal);
   };
 
+  const closeModal = () => {
+    setModal(false);
+    setTitle("");
+    setContent("");
+  };
+
   if (modal) {
     document.body.classList.add("active-modal");
   } else {
@@ -25,10 +31,9 @@ function CreateNoteModal({ getNotes }) {
       .then((res) => {
         if (res.status === 201) {
           alert("Yayy! Created Note successfully!");
-          // Reset form and close modal after success
           setTitle("");
           setContent("");
-          // Reload notes list
+          closeModal();
           getNotes();
         } else {
           alert("Oops, failed to create note.");
@@ -70,7 +75,7 @@ function CreateNoteModal({ getNotes }) {
               <br />
               <input type="submit" value="Submit" />
             </form>
-            <button className="close-modal-button" onClick={toggleModal}>
+            <button className="close-modal-button" onClick={closeModal}>
               Cancel
             </button>
           </div>
