@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from rest_framework import generics
-from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import UserSerializer, NoteSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -45,3 +44,15 @@ class CurrentUserView(generics.RetrieveAPIView):
         return Response({
             "username": user.username
         })
+
+class NoteEdit(generics.UpdateAPIView):
+    serializer_class = NoteSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        return Note.objects.filter(author=user)
+    
+    def perform_update(self, serializer):
+        serializer.save(author=self.request.user)
+     

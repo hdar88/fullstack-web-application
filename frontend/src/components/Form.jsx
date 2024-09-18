@@ -9,6 +9,7 @@ function Form({ route, method }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const name = method === "login" ? "Login" : "Register";
@@ -27,7 +28,38 @@ function Form({ route, method }) {
         navigate("/login");
       }
     } catch (error) {
-      alert(error);
+      // Log the entire error response for debugging purposes
+      console.log("Error response:", error.response);
+
+      if (error.response) {
+        if (method === "login") {
+          if (error.response.status === 400) {
+            setError("Oops! No username/password provided.");
+          } else if (error.response.status === 401) {
+            setError("Oops! Wrong password or username!");
+          }
+          // Check for specific status codes and set appropriate messages
+        } else if (method === "register") {
+          if (error.response.status === 400) {
+            const errorMessage =
+              error.response.data?.username?.[0] ||
+              error.response.data?.password?.[0];
+
+            if (errorMessage === "This field may not be blank.") {
+              setError("Oops! No username/password provided.");
+            } else if (
+              errorMessage === "A user with that username already exists."
+            ) {
+              setError("Oops! This username already exists.");
+            } else {
+              setError("Oops! Please try again later.");
+            }
+          }
+        }
+      } else {
+        // Handle network or other unknown errors
+        setError("Network error. Please check your connection.");
+      }
     } finally {
       setLoading(false);
     }
@@ -54,6 +86,7 @@ function Form({ route, method }) {
       <button className="form-button" type="submit">
         {name}
       </button>
+      {error && <div className="error-message">{error}</div>}
     </form>
   );
 }
