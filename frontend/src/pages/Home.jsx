@@ -3,10 +3,13 @@ import api from "../api";
 import Note from "../components/Note";
 import "../styles/Home.css";
 import CreateNoteModal from "../components/CreateModal";
+import EditNoteModal from "../components/EditModal";
 
 function Home() {
   const [notes, setNotes] = useState([]);
   const [username, setUsername] = useState("");
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [currentNote, setCurrentNote] = useState(null);
 
   // get user name of currently logged in user
   useEffect(() => {
@@ -50,16 +53,32 @@ function Home() {
       .catch((error) => alert("Oops!An error occured."));
   };
 
+  // Open the edit modal for a specific note
+  const openEditModal = (note) => {
+    setCurrentNote(note); // Set the note to be edited
+    setIsEditModalOpen(true); // Open the modal
+  };
+
+  // Close the edit modal
+  const closeEditModal = () => {
+    setIsEditModalOpen(false);
+    setCurrentNote(null); // Reset the current note after closing
+  };
+
   // edit note with id
-  const editNote = (id) => {
+  const editNote = (id, updatedData) => {
     api
-      .put(`/api/notes/edit/${id}/`)
+      .put(`/api/notes/edit/${id}/`, updatedData)
       .then((res) => {
-        if (res.status === 204) alert("Yayy! Edited Note successfully!");
-        else alert("Oops, failed to edit this note.");
-        getNotes();
+        if (res.status === 200) {
+          alert("Yayy! Edited Note successfully!");
+          getNotes(); // Refresh the notes after update
+          closeEditModal(); // Close the modal after editing
+        } else {
+          alert("Oops, failed to edit this note.");
+        }
       })
-      .catch((error) => alert("Oops!An error occured."));
+      .catch((error) => alert("Oops! An error occurred."));
   };
 
   return (
@@ -71,10 +90,22 @@ function Home() {
         <ul>
           {notes.map((note) => (
             <li key={note.id}>
-              <Note note={note} onDelete={deleteNote} onEdit={editNote} />
+              <Note
+                note={note}
+                onDelete={deleteNote}
+                onEdit={() => openEditModal(note)}
+              />
             </li>
           ))}
         </ul>
+        {isEditModalOpen && (
+          <EditNoteModal
+            isOpen={isEditModalOpen}
+            note={currentNote}
+            onClose={closeEditModal}
+            onUpdate={editNote}
+          />
+        )}
       </div>
     </div>
   );
