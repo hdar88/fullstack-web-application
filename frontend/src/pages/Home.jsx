@@ -107,6 +107,9 @@ function Home() {
           />
         )}
       </div>
+      <button className="logout-button">
+        <span>&#8592;</span>
+      </button>
     </div>
   );
 }

@@ -45,9 +45,8 @@ function CreateNoteModal({ getNotes }) {
   return (
     <>
       <button onClick={toggleModal} className="create-button">
-        Create Note
+        <span>&#43;</span>
       </button>
-
       {modal && (
         <div className="modal">
           <div onClick={toggleModal} className="overlay"></div>
