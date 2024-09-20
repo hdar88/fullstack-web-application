@@ -81,6 +81,10 @@ function Home() {
       .catch((error) => alert("Oops! An error occurred."));
   };
 
+  const handleLogout = () => {
+    window.location.href = "http://localhost:5173/logout";
+  };
+
   return (
     <div>
       <h1>Welcome, {username}</h1>
@@ -107,7 +111,7 @@ function Home() {
           />
         )}
       </div>
-      <button className="logout-button">
+      <button className="logout-button" onClick={handleLogout}>
         <span>&#8592;</span>
       </button>
     </div>
