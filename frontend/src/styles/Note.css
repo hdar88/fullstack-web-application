@@ -28,21 +28,23 @@
 }
 
 .delete-button {
-  background-color: #ecad83;
-  color: white;
+  background-color: transparent;
+  color: grey;
+  font-size: 32px;
 }
 
 .delete-button:hover {
-  background-color: #a74503;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .edit-button {
-  background-color: #ac83cb;
-  color: white;
+  background-color: transparent;
+  color: grey;
+  font-size: 32px;
 }
 
 .edit-button:hover {
-  background-color: #9648d1;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Modal Styling */

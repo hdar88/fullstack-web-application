@@ -21,7 +21,8 @@ function Home() {
       const response = await api.get("/api/current-user/");
       setUsername(response.data.username);
     } catch (error) {
-      console.error("Error fetching current user:", error);
+      alert("Oops! An error occurred");
+      console.log("Error fetching current user:", error);
     }
   };
 
@@ -38,7 +39,10 @@ function Home() {
         setNotes(data);
         console.log(data);
       })
-      .catch((err) => alert(err));
+      .catch((err) => {
+        alert("Oops! An error occurred");
+        console.log(err);
+      });
   };
 
   // delete note with id

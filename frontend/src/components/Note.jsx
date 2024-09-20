@@ -31,13 +31,13 @@ function Note({ note, onDelete, onEdit }) {
       <p className="note-date">{formattedDate}</p>
       <div className="note-actions">
         <button className="edit-button" onClick={onEdit}>
-          Edit
+          &#9998;
         </button>
         <button
           className="delete-button"
           onClick={() => handleDeleteClick(note.id)}
         >
-          Delete
+          &#128465;
         </button>
         {/* Confirmation Modal */}
         {showConfirmModal && (
