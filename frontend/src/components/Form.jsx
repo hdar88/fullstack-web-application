@@ -14,9 +14,23 @@ function Form({ route, method }) {
 
   const name = method === "login" ? "Login" : "Register";
 
+  // strong password policy
+  const validatePasswordStrength = (password) => {
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+    return passwordRegex.test(password);
+  };
+
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
+
+    if (method === "register" && !validatePasswordStrength(password)) {
+      setError(
+        "Oops! Your password must be at least 8 characters long, include one uppercase and one lowercase letter, one number, one special character."
+      );
+      setLoading(false);
+      return;
+    }
 
     try {
       const res = await api.post(route, { username, password });
@@ -80,7 +94,7 @@ function Form({ route, method }) {
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
+        placeholder="password"
       />
       {loading && <Loader />}
       <button className="form-button" type="submit">
