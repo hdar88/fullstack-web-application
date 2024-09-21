@@ -71,7 +71,7 @@
 }
 
 .modal-content {
-  background-color: white;
+  background-color: rgb(234, 220, 255);
   padding: 20px;
   border-radius: 8px;
   max-width: 400px;
@@ -88,29 +88,33 @@
 }
 
 .modal-content button {
-  padding: 15px;
-  border-radius: 8px;
+  background-color: transparent;
+  padding: 2px;
+  border-radius: 5px;
+  border-color: transparent;
   max-width: 400px;
   width: 40%;
   font-size: 14;
   text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.3);
 }
 
 .modal-content .confirm-delete-button {
-  background-color: #6aaec0;
+  background-color: transparent;
   color: white;
+  font-size: 18px;
 }
 
 .modal-content .confirm-delete-button:hover {
-  background-color: #19667b;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .modal-content .cancel-delete-button {
-  background-color: #c46552;
+  background-color: transparent;
   color: white;
+  font-size: 18px;
 }
 
 .modal-content .cancel-delete-button:hover {
-  background-color: #ba381e;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }

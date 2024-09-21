@@ -46,10 +46,10 @@ function Note({ note, onDelete, onEdit }) {
             <div className="modal-content">
               <p>Are you sure you want to delete this note?</p>
               <button onClick={closeModal} className="cancel-delete-button">
-                Cancel
+                ❌
               </button>
               <button onClick={confirmDelete} className="confirm-delete-button">
-                Yes, Delete
+                ✅
               </button>
             </div>
           </div>
