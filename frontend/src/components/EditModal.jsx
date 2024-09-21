@@ -21,8 +21,8 @@ function EditNoteModal({ isOpen, note, onClose, onUpdate }) {
       title,
       content,
     };
-    onUpdate(note.id, updatedNote); // Call onUpdate (editNote) with the updated data
-    onClose(); // Close the modal after submission
+    onUpdate(note.id, updatedNote);
+    onClose();
   };
 
   // Modal toggle logic (added/removed 'active-modal' class to body for styling)
