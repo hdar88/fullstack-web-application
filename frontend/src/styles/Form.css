@@ -56,3 +56,27 @@
   font-size: 18px;
   color: #d9534f;
 }
+
+/* styling for redirecting to login/registration button */
+span {
+  font-size: 14px;
+}
+
+.redirect-to-login,
+.redirect-to-register {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 14px;
+  margin-left: 5px;
+  padding: 0;
+  display: inline;
+  vertical-align: middle;
+}
+
+.redirect-to-login:hover,
+.redirect-to-register:hover {
+  color: #0056b3;
+}

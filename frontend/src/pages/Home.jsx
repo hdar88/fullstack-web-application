@@ -21,7 +21,8 @@ function Home() {
       const response = await api.get("/api/current-user/");
       setUsername(response.data.username);
     } catch (error) {
-      console.error("Error fetching current user:", error);
+      alert("Oops! An error occurred");
+      console.log("Error fetching current user:", error);
     }
   };
 
@@ -38,7 +39,10 @@ function Home() {
         setNotes(data);
         console.log(data);
       })
-      .catch((err) => alert(err));
+      .catch((err) => {
+        alert("Oops! An error occurred");
+        console.log(err);
+      });
   };
 
   // delete note with id
@@ -79,33 +83,111 @@ function Home() {
         }
       })
       .catch((error) => alert("Oops! An error occurred."));
+    console.log(error);
+  };
+
+  const handleLogout = () => {
+    window.location.href = "http://localhost:5173/logout";
   };
 
   return (
-    <div>
+    <div className="home-container">
       <h1>Welcome, {username}</h1>
-      <div>
+      <div className="dashboard-container">
         <h2>Dashboard</h2>
-        <CreateNoteModal getNotes={getNotes}></CreateNoteModal>
-        <ul>
-          {notes.map((note) => (
-            <li key={note.id}>
-              <Note
-                note={note}
-                onDelete={deleteNote}
-                onEdit={() => openEditModal(note)}
+        <div className="dashboard-content">
+          <div className="dashboard-sidebar-container">
+            <aside className="dashboard-sidebar">
+              <nav>
+                <ul>
+                  <li>
+                    <button className="sidebar-home-button">
+                      <span className="sidebar-home-button-span">
+                        &#127968;
+                      </span>
+                    </button>
+                  </li>
+                  <li>
+                    <button className="sidebar-pinned-button">
+                      <span className="sidebar-pinned-button-span">
+                        &#128206;
+                      </span>
+                    </button>
+                  </li>
+                  <li>
+                    <button className="sidebar-archive-button">
+                      <span className="sidebar-archive-button-span">
+                        &#128230;
+                      </span>
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+              <hr />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <nav>
+                <ul>
+                  <li>
+                    <button className="sidebar-settings-button">
+                      <span className="sidebar-settings-button-span">
+                        &#9881;
+                      </span>
+                    </button>
+                  </li>
+                  <li>
+                    <button className="sidebar-help-button">
+                      <span className="sidebar-help-button-span">&#63;</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      className="sidebar-logout-button"
+                      onClick={handleLogout}
+                    >
+                      <span className="sidebar-logout-button-span">
+                        &#8592;
+                      </span>
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+            </aside>
+          </div>
+
+          <div className="notes-list-container">
+            <CreateNoteModal getNotes={getNotes}>
+              <button className="create-button">+</button>
+            </CreateNoteModal>
+            <ul className="notes-list">
+              {notes.map((note) => (
+                <li key={note.id}>
+                  <Note
+                    note={note}
+                    onDelete={deleteNote}
+                    onEdit={() => openEditModal(note)}
+                  />
+                </li>
+              ))}
+            </ul>
+            {isEditModalOpen && (
+              <EditNoteModal
+                isOpen={isEditModalOpen}
+                note={currentNote}
+                onClose={closeEditModal}
+                onUpdate={editNote}
               />
-            </li>
-          ))}
-        </ul>
-        {isEditModalOpen && (
-          <EditNoteModal
-            isOpen={isEditModalOpen}
-            note={currentNote}
-            onClose={closeEditModal}
-            onUpdate={editNote}
-          />
-        )}
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

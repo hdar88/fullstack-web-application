@@ -45,9 +45,8 @@ function CreateNoteModal({ getNotes }) {
   return (
     <>
       <button onClick={toggleModal} className="create-button">
-        Create Note
+        <span>&#43;</span>
       </button>
-
       {modal && (
         <div className="modal">
           <div onClick={toggleModal} className="overlay"></div>
@@ -73,11 +72,16 @@ function CreateNoteModal({ getNotes }) {
                 onChange={(e) => setContent(e.target.value)}
               ></textarea>
               <br />
-              <input type="submit" value="Submit" />
+              <div className="form-buttons">
+                <button
+                  className="close-create-modal-button"
+                  onClick={closeModal}
+                >
+                  Cancel
+                </button>
+                <input type="submit" value="Submit" />
+              </div>
             </form>
-            <button className="close-modal-button" onClick={closeModal}>
-              Cancel
-            </button>
           </div>
         </div>
       )}

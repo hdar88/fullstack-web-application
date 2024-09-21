@@ -31,25 +31,28 @@ function Note({ note, onDelete, onEdit }) {
       <p className="note-date">{formattedDate}</p>
       <div className="note-actions">
         <button className="edit-button" onClick={onEdit}>
-          Edit
+          &#9998;
         </button>
         <button
           className="delete-button"
           onClick={() => handleDeleteClick(note.id)}
         >
-          Delete
+          &#128465;
         </button>
         {/* Confirmation Modal */}
         {showConfirmModal && (
-          <div className="modal">
-            <div className="overlay" onClick={closeModal}></div>
-            <div className="modal-content">
+          <div className="delete-confirmation-modal">
+            <div
+              className="delete-confirmation-overlay"
+              onClick={closeModal}
+            ></div>
+            <div className="delete-confirmation-modal-content">
               <p>Are you sure you want to delete this note?</p>
               <button onClick={closeModal} className="cancel-delete-button">
-                Cancel
+                ❌
               </button>
               <button onClick={confirmDelete} className="confirm-delete-button">
-                Yes, Delete
+                ✅
               </button>
             </div>
           </div>

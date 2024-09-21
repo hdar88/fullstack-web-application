@@ -45,27 +45,85 @@ form input[type="submit"]:hover {
   background-color: #0056b3;
 }
 
-/*style for modal buttons on dashboard */
+/* Style for modal buttons on dashboard */
 .create-button {
-  width: 8%;
-  padding: 10px;
-  margin: 20px 0;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  margin-left: 94%;
+  margin-right: 0;
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
 }
 
-.close-modal-button {
-  width: 8%;
-  padding: 10px;
-  margin: 20px 0;
-  background-color: #007bff;
+.create-button:hover {
+  background-color: #2268b3;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Container for the buttons */
+.form-buttons {
+  display: inline;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-left: 5%;
+}
+
+/* General button styles to ensure consistency */
+form input[type="submit"] {
+  width: 25%;
+  height: 60%;
+  background-color: rgb(0, 123, 255);
   color: white;
-  border: none;
-  border-radius: 4px;
+  padding: 15px;
+  border-radius: 20px;
+  font-size: 16px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  border: none;
+  margin-left: 40%;
+}
+.close-create-modal-button {
+  width: 25%;
+  height: 60%;
+  background-color: rgb(0, 123, 255);
+  color: white;
+  padding: 15px;
+  border-radius: 20px;
+  font-size: 16px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  border: none;
+}
+
+/* Specific styling for submit button */
+form input[type="submit"] {
+  background-color: rgb(0, 123, 255);
+  margin-right: 4%;
+}
+
+/* Specific styling for cancel button */
+.close-create-modal-button {
+  background-color: #d8655f;
+}
+
+/* Hover effects for both buttons */
+form input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.close-create-modal-button:hover {
+  background-color: #b43a3a;
 }

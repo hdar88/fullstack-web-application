@@ -101,6 +101,32 @@ function Form({ route, method }) {
         {name}
       </button>
       {error && <div className="error-message">{error}</div>}
+
+      {method === "login" ? (
+        <>
+          <div>
+            <span>No account yet?</span>
+            <button
+              className="redirect-to-register"
+              onClick={() => navigate("/register")}
+            >
+              Register here
+            </button>
+          </div>
+        </>
+      ) : (
+        <>
+          <div>
+            <span>Already have an account?</span>
+            <button
+              className="redirect-to-login"
+              onClick={() => navigate("/login")}
+            >
+              Login
+            </button>
+          </div>
+        </>
+      )}
     </form>
   );
 }
