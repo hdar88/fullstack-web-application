@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../styles/EditModal.css";
 
 function EditNoteModal({ isOpen, note, onClose, onUpdate }) {
   const [title, setTitle] = useState("");
@@ -15,29 +16,34 @@ function EditNoteModal({ isOpen, note, onClose, onUpdate }) {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Prepare updated note data
+
     const updatedNote = {
       title,
       content,
     };
-    onUpdate(note.id, updatedNote); // Call onUpdate (editNote) with the updated data
+    onUpdate(note.id, updatedNote);
+    onClose();
   };
 
   // Modal toggle logic (added/removed 'active-modal' class to body for styling)
-  if (isOpen) {
-    document.body.classList.add("active-modal");
-  } else {
-    document.body.classList.remove("active-modal");
-  }
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("active-modal");
+    } else {
+      document.body.classList.remove("active-modal");
+    }
+  }, [isOpen]);
 
   return (
     <>
       {isOpen && (
-        <div className="modal">
+        <div className="edit-modal-overlay">
           <div onClick={onClose} className="overlay"></div>
-          <div className="modal-content">
+          <div className="edit-modal-content">
             <form onSubmit={handleSubmit}>
-              <label htmlFor="title">Title:</label>
+              <label htmlFor="title" className="form-labels">
+                Title:
+              </label>
               <br />
               <input
                 type="text"
@@ -47,7 +53,9 @@ function EditNoteModal({ isOpen, note, onClose, onUpdate }) {
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
               />
-              <label htmlFor="content">Content:</label>
+              <label htmlFor="content" className="form-labels">
+                Content:
+              </label>
               <br />
               <textarea
                 id="content"
@@ -57,11 +65,17 @@ function EditNoteModal({ isOpen, note, onClose, onUpdate }) {
                 onChange={(e) => setContent(e.target.value)}
               ></textarea>
               <br />
-              <input type="submit" value="Submit" />
+              <div className="form-buttons">
+                <button
+                  type="button"
+                  className="close-edit-modal-button"
+                  onClick={onClose}
+                >
+                  Cancel
+                </button>
+                <input type="submit" value="Submit" />
+              </div>
             </form>
-            <button className="close-modal-button" onClick={onClose}>
-              Cancel
-            </button>
           </div>
         </div>
       )}

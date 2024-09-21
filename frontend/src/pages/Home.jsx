@@ -4,12 +4,15 @@ import Note from "../components/Note";
 import "../styles/Home.css";
 import CreateNoteModal from "../components/CreateModal";
 import EditNoteModal from "../components/EditModal";
+import DeleteNoteModal from "../components/DeleteModal";
 
 function Home() {
   const [notes, setNotes] = useState([]);
   const [username, setUsername] = useState("");
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [currentNote, setCurrentNote] = useState(null);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [noteToDelete, setNoteToDelete] = useState(null);
 
   // get user name of currently logged in user
   useEffect(() => {
@@ -53,20 +56,21 @@ function Home() {
         if (res.status === 204) alert("Yayy! Deleted Note successfully!");
         else alert("Oops, failed to delete this note.");
         getNotes();
+        closeDeleteModal();
       })
       .catch((error) => alert("Oops!An error occured."));
   };
 
   // Open the edit modal for a specific note
   const openEditModal = (note) => {
-    setCurrentNote(note); // Set the note to be edited
-    setIsEditModalOpen(true); // Open the modal
+    setCurrentNote(note);
+    setIsEditModalOpen(true);
   };
 
   // Close the edit modal
   const closeEditModal = () => {
     setIsEditModalOpen(false);
-    setCurrentNote(null); // Reset the current note after closing
+    setCurrentNote(null);
   };
 
   // edit note with id
@@ -84,6 +88,16 @@ function Home() {
       })
       .catch((error) => alert("Oops! An error occurred."));
     console.log(error);
+  };
+
+  const openDeleteModal = (note) => {
+    setNoteToDelete(note);
+    setIsDeleteModalOpen(true);
+  };
+
+  const closeDeleteModal = () => {
+    setIsDeleteModalOpen(false);
+    setNoteToDelete(null);
   };
 
   const handleLogout = () => {
@@ -172,18 +186,28 @@ function Home() {
                 <li key={note.id}>
                   <Note
                     note={note}
-                    onDelete={deleteNote}
+                    onDelete={() => openDeleteModal(note)}
                     onEdit={() => openEditModal(note)}
                   />
                 </li>
               ))}
             </ul>
+
             {isEditModalOpen && (
               <EditNoteModal
                 isOpen={isEditModalOpen}
                 note={currentNote}
                 onClose={closeEditModal}
                 onUpdate={editNote}
+              />
+            )}
+
+            {isDeleteModalOpen && (
+              <DeleteNoteModal
+                isOpen={isDeleteModalOpen}
+                note={noteToDelete}
+                onClose={closeDeleteModal}
+                onDelete={() => deleteNote(noteToDelete.id)}
               />
             )}
           </div>

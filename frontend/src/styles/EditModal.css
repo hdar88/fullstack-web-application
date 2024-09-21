@@ -1,25 +1,4 @@
-.note-container {
-  padding: 10px;
-  margin: 20px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.note-title {
-  color: #333;
-}
-
-.note-content {
-  color: #666;
-}
-
-.note-date {
-  color: #999;
-  font-size: 0.8rem;
-}
-
-/* Delete modal styling */
-.delete-modal-overlay {
+.edit-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -33,7 +12,7 @@
   z-index: 1000;
 }
 
-.delete-modal-content {
+.edit-modal-content {
   background-color: transparent;
   padding: 20px;
   border-radius: 8px;
@@ -81,7 +60,7 @@ input[type="submit"] {
   width: 48%;
 }
 
-.close-delete-modal-button {
+.close-edit-modal-button {
   background-color: #901b1b;
   color: white;
   padding: 15px;
@@ -98,11 +77,11 @@ input[type="submit"]:hover {
   background-color: #0056b3;
 }
 
-.close-delete-modal-button:hover {
+.close-edit-modal-button:hover {
   background-color: #b43a3a;
 }
 
-.delete-button {
+.edit-button {
   width: 50px;
   height: 50px;
   padding: 0;
@@ -121,12 +100,12 @@ input[type="submit"]:hover {
     box-shadow 0.2s ease-in-out;
 }
 
-.delete-button:hover {
+.edit-button:hover {
   background-color: transparent;
   transform: scale(1.1);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
-.delete-button-span {
+.edit-button-span {
   font-size: 48px;
 }
