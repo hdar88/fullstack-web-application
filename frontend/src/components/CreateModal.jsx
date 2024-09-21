@@ -72,11 +72,16 @@ function CreateNoteModal({ getNotes }) {
                 onChange={(e) => setContent(e.target.value)}
               ></textarea>
               <br />
-              <input type="submit" value="Submit" />
+              <div className="form-buttons">
+                <button
+                  className="close-create-modal-button"
+                  onClick={closeModal}
+                >
+                  Cancel
+                </button>
+                <input type="submit" value="Submit" />
+              </div>
             </form>
-            <button className="close-modal-button" onClick={closeModal}>
-              Cancel
-            </button>
           </div>
         </div>
       )}

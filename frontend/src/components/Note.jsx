@@ -41,9 +41,12 @@ function Note({ note, onDelete, onEdit }) {
         </button>
         {/* Confirmation Modal */}
         {showConfirmModal && (
-          <div className="modal">
-            <div className="overlay" onClick={closeModal}></div>
-            <div className="modal-content">
+          <div className="delete-confirmation-modal">
+            <div
+              className="delete-confirmation-overlay"
+              onClick={closeModal}
+            ></div>
+            <div className="delete-confirmation-modal-content">
               <p>Are you sure you want to delete this note?</p>
               <button onClick={closeModal} className="cancel-delete-button">
                 ❌

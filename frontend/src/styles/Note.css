@@ -48,7 +48,7 @@
 }
 
 /* Modal Styling */
-.modal {
+.delete-confirmation-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -60,7 +60,7 @@
   z-index: 999;
 }
 
-.overlay {
+.delete-confirmation-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -70,7 +70,7 @@
   z-index: 998;
 }
 
-.modal-content {
+.delete-confirmation-modal-content {
   background-color: rgb(234, 220, 255);
   padding: 20px;
   border-radius: 8px;
@@ -81,13 +81,13 @@
   z-index: 999;
 }
 
-.modal-content p {
+.delete-confirmation-modal-content p {
   margin-bottom: 20px;
   font-size: 16px;
   color: #333;
 }
 
-.modal-content button {
+.delete-confirmation-modal-content button {
   background-color: transparent;
   padding: 2px;
   border-radius: 5px;
@@ -99,22 +99,22 @@
   box-shadow: 0 20px 25px rgba(0, 0, 0, 0.3);
 }
 
-.modal-content .confirm-delete-button {
+.delete-confirmation-modal-content .confirm-delete-button {
   background-color: transparent;
   color: white;
   font-size: 18px;
 }
 
-.modal-content .confirm-delete-button:hover {
+.delete-confirmation-modal-content .confirm-delete-button:hover {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
-.modal-content .cancel-delete-button {
+.delete-confirmation-modal-content .cancel-delete-button {
   background-color: transparent;
   color: white;
   font-size: 18px;
 }
 
-.modal-content .cancel-delete-button:hover {
+.delete-confirmation-modal-content .cancel-delete-button:hover {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
