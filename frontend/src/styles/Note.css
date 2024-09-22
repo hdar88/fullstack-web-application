@@ -1,132 +1,78 @@
 .note-container {
-  padding: 10px;
+  background-color: rgb(130, 162, 206);
+  padding: 20px;
   margin: 20px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 50px;
+  border-width: 1300px;
+  box-shadow: 0 4px 8px transparent;
+  border-bottom: 2px solid rgba(23, 41, 155, 0.405);
+  justify-content: center;
+  align-items: center;
 }
 
 .note-title {
-  color: #333;
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .note-content {
-  color: #666;
+  color: white;
+  font-size: 1.2em;
+  margin-bottom: 15px;
 }
 
 .note-date {
-  color: #999;
-  font-size: 0.8rem;
-}
-
-/* Delete modal styling */
-.delete-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.delete-modal-content {
-  background-color: transparent;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  max-width: 500px;
-  width: 90%;
-}
-
-.form-labels {
-  background-color: transparent;
-  color: grey;
+  display: inline-block;
+  font-size: 0.9em;
+  color: #fff;
+  background-color: rgb(59, 77, 105);
+  padding: 5px 10px;
+  border-radius: 12px;
+  margin-bottom: 20px;
   font-weight: bold;
-  margin-top: 10px;
-  font-size: 24px;
-  text-shadow: 0 0 8px rgba(157, 196, 239, 0.8), 0 0 16px rgba(0, 123, 255, 0.6),
-    0 0 24px rgba(0, 123, 255, 0.4);
+  text-align: center;
 }
 
-input[type="text"],
-textarea {
-  width: 100%;
-  padding: 8px;
-  margin: 8px 0 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.form-buttons {
+.note-actions {
+  border-radius: 50%;
+  border-color: transparent;
   display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+  justify-content: flex-start;
+  gap: 10px;
 }
 
-input[type="submit"] {
-  background-color: rgb(0, 123, 255);
-  color: white;
-  padding: 15px;
-  border-radius: 8px;
-  font-size: 16px;
-  text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  border: none;
-  width: 48%;
-}
-
-.close-delete-modal-button {
-  background-color: #901b1b;
-  color: white;
-  padding: 15px;
-  border-radius: 8px;
-  font-size: 16px;
-  text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  border: none;
-  width: 48%;
-}
-
-input[type="submit"]:hover {
-  background-color: #0056b3;
-}
-
-.close-delete-modal-button:hover {
-  background-color: #b43a3a;
-}
-
-.delete-button {
-  width: 50px;
-  height: 50px;
-  padding: 0;
-  margin-left: 94%;
-  margin-right: 0;
+.edit-button,
+.delete-button,
+.copy-button {
+  width: 90px;
+  height: 90px;
   background-color: transparent;
-  color: white;
+  color: black;
   border: none;
   border-radius: 50%;
   cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
-  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out,
-    box-shadow 0.2s ease-in-out;
 }
 
-.delete-button:hover {
+.edit-button:hover,
+.delete-button:hover,
+.copy-button:hover {
   background-color: transparent;
   transform: scale(1.1);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
-.delete-button-span {
-  font-size: 48px;
+.edit-button-span,
+.delete-button-span,
+.copy-button-span {
+  display: inline-block;
+  padding: 5px;
+  border-radius: 50%;
+  font-size: 40px;
 }

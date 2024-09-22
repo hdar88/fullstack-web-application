@@ -21,14 +21,11 @@
   width: 90%;
 }
 
-.form-labels {
+.edit-form-labels-span {
   background-color: transparent;
-  color: grey;
-  font-weight: bold;
+  color: black;
   margin-top: 10px;
-  font-size: 24px;
-  text-shadow: 0 0 8px rgba(157, 196, 239, 0.8), 0 0 16px rgba(0, 123, 255, 0.6),
-    0 0 24px rgba(0, 123, 255, 0.4);
+  font-size: 48px;
 }
 
 input[type="text"],
@@ -41,14 +38,14 @@ textarea {
   box-sizing: border-box;
 }
 
-.form-buttons {
+.edit-form-buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
 
 input[type="submit"] {
-  background-color: rgb(0, 123, 255);
+  background-color: transparent;
   color: white;
   padding: 15px;
   border-radius: 8px;
@@ -61,7 +58,7 @@ input[type="submit"] {
 }
 
 .close-edit-modal-button {
-  background-color: #901b1b;
+  background-color: transparent;
   color: white;
   padding: 15px;
   border-radius: 8px;
@@ -74,38 +71,9 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: rgb(115, 238, 115);
 }
 
 .close-edit-modal-button:hover {
-  background-color: #b43a3a;
-}
-
-.edit-button {
-  width: 50px;
-  height: 50px;
-  padding: 0;
-  margin-left: 94%;
-  margin-right: 0;
-  background-color: transparent;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32px;
-  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out,
-    box-shadow 0.2s ease-in-out;
-}
-
-.edit-button:hover {
-  background-color: transparent;
-  transform: scale(1.1);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-}
-
-.edit-button-span {
-  font-size: 48px;
+  background-color: #ea7b7b;
 }

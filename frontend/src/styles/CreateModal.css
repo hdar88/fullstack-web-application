@@ -1,4 +1,4 @@
-.modal-overlay {
+.create-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -12,7 +12,7 @@
   z-index: 1000;
 }
 
-.modal-content {
+.create-modal-content {
   background-color: transparent;
   padding: 20px;
   border-radius: 8px;
@@ -21,18 +21,17 @@
   width: 90%;
 }
 
-.form-labels {
+.create-form-labels {
   background-color: transparent;
   color: grey;
   font-weight: bold;
   margin-top: 10px;
   font-size: 24px;
-  text-shadow: 0 0 8px rgba(157, 196, 239, 0.8), 0 0 16px rgba(0, 123, 255, 0.6),
-    0 0 24px rgba(0, 123, 255, 0.4);
 }
 
 input[type="text"],
 textarea {
+  background-color: transparent;
   width: 100%;
   padding: 8px;
   margin: 8px 0 16px;
@@ -41,7 +40,7 @@ textarea {
   box-sizing: border-box;
 }
 
-.form-buttons {
+.create-form-buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
@@ -61,7 +60,7 @@ input[type="submit"] {
 }
 
 .close-create-modal-button {
-  background-color: #901b1b;
+  background-color: transparent;
   color: white;
   padding: 15px;
   border-radius: 8px;
@@ -74,20 +73,20 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: rgb(115, 238, 115);
 }
 
 .close-create-modal-button:hover {
-  background-color: #b43a3a;
+  background-color: #ea7b7b;
 }
 
 .create-button {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   padding: 0;
-  margin-left: 94%;
+  margin-left: 90%;
   margin-right: 0;
-  background-color: transparent;
+  background-color: rgb(130, 162, 206);
   color: white;
   border: none;
   border-radius: 50%;
@@ -101,11 +100,11 @@ input[type="submit"]:hover {
 }
 
 .create-button:hover {
-  background-color: transparent;
+  background-color: rgb(93, 138, 201);
   transform: scale(1.1);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .create-button-span {
-  font-size: 48px;
+  font-size: 55px;
 }
