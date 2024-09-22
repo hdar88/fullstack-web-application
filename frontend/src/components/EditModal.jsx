@@ -65,7 +65,7 @@ function EditNoteModal({ isOpen, note, onClose, onUpdate }) {
                 onChange={(e) => setContent(e.target.value)}
               ></textarea>
               <br />
-              <div className="form-buttons">
+              <div className="edit-form-buttons">
                 <button
                   type="button"
                   className="close-edit-modal-button"
