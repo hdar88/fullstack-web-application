@@ -80,54 +80,56 @@ function Form({ route, method }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form-container">
-      <h1>{name}</h1>
-      <input
-        className="form-input"
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        placeholder="Username"
-      />
-      <input
-        className="form-input"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="password"
-      />
-      {loading && <Loader />}
-      <button className="form-button" type="submit">
-        {name}
-      </button>
-      {error && <div className="error-message">{error}</div>}
+    <div className="full-page-wrapper">
+      <form onSubmit={handleSubmit} className="form-container">
+        <h1>{name}</h1>
+        <input
+          className="form-input"
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
+        />
+        <input
+          className="form-input"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="password"
+        />
+        {loading && <Loader />}
+        <button className="form-button" type="submit">
+          <span className="form-button-span">{name}</span>
+        </button>
+        {error && <div className="error-message">{error}</div>}
 
-      {method === "login" ? (
-        <>
-          <div>
-            <span>No account yet?</span>
-            <button
-              className="redirect-to-register"
-              onClick={() => navigate("/register")}
-            >
-              Register here
-            </button>
-          </div>
-        </>
-      ) : (
-        <>
-          <div>
-            <span>Already have an account?</span>
-            <button
-              className="redirect-to-login"
-              onClick={() => navigate("/login")}
-            >
-              Login
-            </button>
-          </div>
-        </>
-      )}
-    </form>
+        {method === "login" ? (
+          <>
+            <div className="redirect-to-div">
+              <span>No account yet?</span>
+              <button
+                className="redirect-to-register"
+                onClick={() => navigate("/register")}
+              >
+                <span className="redirect-to-span">Register here</span>
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="redirect-to-div">
+              <span>Already have an account?</span>
+              <button
+                className="redirect-to-login"
+                onClick={() => navigate("/login")}
+              >
+                <span className="redirect-to-span">Login</span>
+              </button>
+            </div>
+          </>
+        )}
+      </form>
+    </div>
   );
 }
 
