@@ -41,8 +41,8 @@ function EditNoteModal({ isOpen, note, onClose, onUpdate }) {
           <div onClick={onClose} className="overlay"></div>
           <div className="edit-modal-content">
             <form onSubmit={handleSubmit}>
-              <label htmlFor="title" className="form-labels">
-                Title:
+              <label htmlFor="title" className="edit-form-labels">
+                <span className="edit-form-labels-span"> 🪧 </span>
               </label>
               <br />
               <input
@@ -53,8 +53,8 @@ function EditNoteModal({ isOpen, note, onClose, onUpdate }) {
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
               />
-              <label htmlFor="content" className="form-labels">
-                Content:
+              <label htmlFor="content" className="edit-form-labels">
+                <span className="edit-form-labels-span"> 📝 </span>
               </label>
               <br />
               <textarea
@@ -65,15 +65,15 @@ function EditNoteModal({ isOpen, note, onClose, onUpdate }) {
                 onChange={(e) => setContent(e.target.value)}
               ></textarea>
               <br />
-              <div className="form-buttons">
+              <div className="edit-form-buttons">
                 <button
                   type="button"
                   className="close-edit-modal-button"
                   onClick={onClose}
                 >
-                  Cancel
+                  ❌
                 </button>
-                <input type="submit" value="Submit" />
+                <input type="submit" value="✅" />
               </div>
             </form>
           </div>

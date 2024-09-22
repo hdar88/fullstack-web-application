@@ -1,10 +1,102 @@
 /* Container for the whole page */
 .home-container {
-  background-color: rgba(23, 41, 155, 0.405);
+  background-color: rgb(190, 216, 255);
   font-family: Arial, sans-serif;
-  max-width: 1500px;
   margin: 0 auto;
   padding: 20px;
+}
+
+.dashboard-options-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100px;
+  padding: 0 20px;
+  width: auto;
+  gap: 30px;
+  margin-left: 16%;
+}
+
+.dashboard-filter-button {
+  width: 90px;
+  height: 90px;
+  background-color: rgb(130, 162, 206);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-filter-button:hover {
+  background-color: rgb(130, 162, 206);
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.dashboard-filter-button-span {
+  display: inline-block;
+  font-size: 40px;
+}
+
+.dashboard-search-container {
+  display: flex;
+  align-items: center;
+  background-color: rgb(130, 162, 206);
+  height: 90px;
+  width: 80%;
+  border-radius: 20px;
+  padding: 0 10px;
+}
+
+.dashboard-search-input-field {
+  flex-grow: 1;
+  background-color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: none;
+  font-size: 1em;
+  box-shadow: none;
+}
+
+.dashboard-search-input-field::placeholder {
+  color: white;
+  opacity: 1;
+}
+
+.search-icon {
+  font-size: 60px;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 5%;
+}
+
+.create-note-button {
+  width: 90px;
+  height: 90px;
+  background-color: rgb(130, 162, 206);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-note-button:hover {
+  background-color: rgb(130, 162, 206);
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.create-note-button-span {
+  color: white;
+  font-size: 40px;
 }
 
 .dashboard-content {
@@ -26,18 +118,7 @@
 
 /* Styles for the notes list */
 .notes-list {
-  border-radius: 50px;
-  background-color: rgb(220, 234, 255);
   list-style: none;
-}
-
-/* Styles for individual notes */
-.note {
-  border-left: 5px solid #007bff;
-  margin: 10px 0;
-  padding: 10px 15px;
-  border-radius: 5px;
-  border-style: hidden;
 }
 
 /* styling for sidebar */
@@ -46,7 +127,7 @@
   width: 150px;
   padding: 20px;
   border-radius: 50px;
-  background-color: rgb(220, 234, 255);
+  background-color: rgb(130, 162, 206);
   border-right: 1px solid #ddd;
 }
 

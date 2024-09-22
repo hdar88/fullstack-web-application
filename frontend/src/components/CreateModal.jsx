@@ -2,22 +2,17 @@ import React, { useState } from "react";
 import "../styles/CreateModal.css";
 import api from "../api";
 
-function CreateNoteModal({ getNotes }) {
-  const [modal, setModal] = useState(false);
+function CreateNoteModal({ getNotes, toggleModal, isOpen }) {
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
 
-  const toggleModal = () => {
-    setModal(!modal);
-  };
-
   const closeModal = () => {
-    setModal(false);
+    toggleModal(false);
     setTitle("");
     setContent("");
   };
 
-  if (modal) {
+  if (isOpen) {
     document.body.classList.add("active-modal");
   } else {
     document.body.classList.remove("active-modal");
@@ -44,15 +39,12 @@ function CreateNoteModal({ getNotes }) {
 
   return (
     <>
-      <button onClick={toggleModal} className="create-button">
-        <span className="create-button-span">&#43;</span>
-      </button>
-      {modal && (
-        <div className="modal-overlay">
-          <div className="modal-content">
+      {isOpen && (
+        <div className="create-modal-overlay">
+          <div className="create-modal-content">
             <form onSubmit={createNote}>
-              <label htmlFor="title" className="form-labels">
-                Title:
+              <label htmlFor="title" className="create-form-labels">
+                <span className="create-form-labels-span"> 🪧 </span>
               </label>
               <br />
               <input
@@ -63,8 +55,8 @@ function CreateNoteModal({ getNotes }) {
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
               />
-              <label htmlFor="content" className="form-labels">
-                Content:
+              <label htmlFor="content" className="create-form-labels">
+                <span className="create-form-labels-span"> 📝 </span>
               </label>
               <br />
               <textarea
@@ -75,15 +67,15 @@ function CreateNoteModal({ getNotes }) {
                 onChange={(e) => setContent(e.target.value)}
               ></textarea>
               <br />
-              <div className="form-buttons">
+              <div className="create-form-buttons">
                 <button
                   type="button"
                   className="close-create-modal-button"
                   onClick={closeModal}
                 >
-                  Cancel
+                  ❌
                 </button>
-                <input type="submit" value="Submit" />
+                <input type="submit" value="✅" />
               </div>
             </form>
           </div>

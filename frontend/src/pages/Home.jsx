@@ -13,6 +13,7 @@ function Home() {
   const [currentNote, setCurrentNote] = useState(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [noteToDelete, setNoteToDelete] = useState(null);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
   // get user name of currently logged in user
   useEffect(() => {
@@ -106,9 +107,31 @@ function Home() {
 
   return (
     <div className="home-container">
-      <h1>Welcome, {username}</h1>
+      <div className="dashboard-header">
+        <h1>Welcome, {username} 👋</h1>
+      </div>
+      <div className="dashboard-options-header">
+        <div className="dashboard-filter-button-container">
+          <button className="dashboard-filter-button">
+            <span className="dashboard-filter-button-span">📚</span>
+          </button>
+        </div>
+        <div className="dashboard-search-container">
+          <input
+            type="text"
+            className="dashboard-search-input-field"
+            placeholder="Search..."
+          />
+          <span className="search-icon">🔎</span>
+        </div>
+        <button
+          className="create-note-button"
+          onClick={() => setIsCreateModalOpen(true)}
+        >
+          <span className="create-note-button-span">+</span>
+        </button>
+      </div>
       <div className="dashboard-container">
-        <h2>Dashboard</h2>
         <div className="dashboard-content">
           <div className="dashboard-sidebar-container">
             <aside className="dashboard-sidebar">
@@ -116,50 +139,42 @@ function Home() {
                 <ul>
                   <li>
                     <button className="sidebar-home-button">
-                      <span className="sidebar-home-button-span">
-                        &#127968;
-                      </span>
+                      <span className="sidebar-home-button-span">🏠</span>
                     </button>
                   </li>
                   <li>
                     <button className="sidebar-pinned-button">
-                      <span className="sidebar-pinned-button-span">
-                        &#128206;
-                      </span>
+                      <span className="sidebar-pinned-button-span">📌</span>
                     </button>
                   </li>
                   <li>
                     <button className="sidebar-archive-button">
-                      <span className="sidebar-archive-button-span">
-                        &#128230;
-                      </span>
+                      <span className="sidebar-archive-button-span">🗂️</span>
                     </button>
                   </li>
                 </ul>
               </nav>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
               <hr />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
               <nav>
                 <ul>
                   <li>
                     <button className="sidebar-settings-button">
-                      <span className="sidebar-settings-button-span">
-                        &#9881;
-                      </span>
+                      <span className="sidebar-settings-button-span">⚙️</span>
                     </button>
                   </li>
                   <li>
                     <button className="sidebar-help-button">
-                      <span className="sidebar-help-button-span">&#63;</span>
+                      <span className="sidebar-help-button-span">❓</span>
                     </button>
                   </li>
                   <li>
@@ -167,9 +182,7 @@ function Home() {
                       className="sidebar-logout-button"
                       onClick={handleLogout}
                     >
-                      <span className="sidebar-logout-button-span">
-                        &#8592;
-                      </span>
+                      <span className="sidebar-logout-button-span">🚪</span>
                     </button>
                   </li>
                 </ul>
@@ -178,9 +191,6 @@ function Home() {
           </div>
 
           <div className="notes-list-container">
-            <CreateNoteModal getNotes={getNotes}>
-              <button className="create-button">+</button>
-            </CreateNoteModal>
             <ul className="notes-list">
               {notes.map((note) => (
                 <li key={note.id}>
@@ -192,6 +202,12 @@ function Home() {
                 </li>
               ))}
             </ul>
+
+            <CreateNoteModal
+              isOpen={isCreateModalOpen}
+              toggleModal={setIsCreateModalOpen}
+              getNotes={getNotes}
+            />
 
             {isEditModalOpen && (
               <EditNoteModal
