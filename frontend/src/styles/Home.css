@@ -1,9 +1,37 @@
-/* Container for the whole page */
+body,
+html {
+  background-color: rgb(190, 216, 255);
+  margin: 0;
+  height: 100%;
+}
+
 .home-container {
   background-color: rgb(190, 216, 255);
   font-family: Arial, sans-serif;
   margin: 0 auto;
   padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgb(190, 216, 255);
+  padding: 10px 0;
+  width: 100%;
+}
+
+.dashboard-header {
+  padding-left: 100px;
+}
+
+.dashboard-header-span {
+  font-size: 40px;
 }
 
 .dashboard-options-header {
@@ -104,6 +132,8 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
+  flex-grow: 1;
+  overflow: hidden;
 }
 
 .dashboard-sidebar-container {
@@ -112,23 +142,44 @@
 }
 
 .notes-list-container {
-  flex-grow: 1;
-  overflow: auto;
+  width: 87%;
+  padding-right: 30px;
+  overflow-y: auto;
+  padding-top: 200px;
 }
 
-/* Styles for the notes list */
 .notes-list {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* styling for sidebar */
 .dashboard-sidebar {
-  height: 850px;
-  width: 150px;
-  padding: 20px;
+  position: fixed;
+  left: 2%;
+  bottom: 2%;
+  z-index: 1000;
+  background-color: rgb(190, 216, 255);
+  padding: 10px 0;
+  height: 80vh;
+  width: 180px;
   border-radius: 50px;
   background-color: rgb(130, 162, 206);
   border-right: 1px solid #ddd;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-sidebar hr {
+  border: 0;
+  border-radius: 20px;
+  height: 5px;
+  background-color: rgb(190, 216, 255);
+  margin: 20px 0;
+  width: 80%;
 }
 
 .dashboard-sidebar nav ul {
@@ -149,7 +200,6 @@
   text-decoration: underline;
 }
 
-/* Style for the logout button */
 .sidebar-help-button,
 .sidebar-settings-button,
 .sidebar-home-button,
