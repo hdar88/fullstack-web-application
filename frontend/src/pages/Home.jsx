@@ -107,29 +107,31 @@ function Home() {
 
   return (
     <div className="home-container">
-      <div className="dashboard-header">
-        <h1>Welcome, {username} 👋</h1>
-      </div>
-      <div className="dashboard-options-header">
-        <div className="dashboard-filter-button-container">
-          <button className="dashboard-filter-button">
-            <span className="dashboard-filter-button-span">📚</span>
+      <div className="dashboard-header-container">
+        <div className="dashboard-header">
+          <h1 className="dashboard-header-span">Welcome, {username} 👋</h1>
+        </div>
+        <div className="dashboard-options-header">
+          <div className="dashboard-filter-button-container">
+            <button className="dashboard-filter-button">
+              <span className="dashboard-filter-button-span">📚</span>
+            </button>
+          </div>
+          <div className="dashboard-search-container">
+            <input
+              type="text"
+              className="dashboard-search-input-field"
+              placeholder="Search..."
+            />
+            <span className="search-icon">🔎</span>
+          </div>
+          <button
+            className="create-note-button"
+            onClick={() => setIsCreateModalOpen(true)}
+          >
+            <span className="create-note-button-span">+</span>
           </button>
         </div>
-        <div className="dashboard-search-container">
-          <input
-            type="text"
-            className="dashboard-search-input-field"
-            placeholder="Search..."
-          />
-          <span className="search-icon">🔎</span>
-        </div>
-        <button
-          className="create-note-button"
-          onClick={() => setIsCreateModalOpen(true)}
-        >
-          <span className="create-note-button-span">+</span>
-        </button>
       </div>
       <div className="dashboard-container">
         <div className="dashboard-content">

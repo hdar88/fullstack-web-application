@@ -24,7 +24,7 @@ function DeleteNoteModal({ isOpen, note, onClose, onDelete }) {
           <div onClick={onClose} className="delete-overlay"></div>
           <div className="delete-modal-content">
             <h2>Are you sure you want to delete this note?</h2>
-            <div className="form-buttons">
+            <div className="delete-form-buttons">
               <button
                 type="button"
                 className="close-delete-modal-button"
