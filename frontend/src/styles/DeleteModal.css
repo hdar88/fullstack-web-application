@@ -30,7 +30,7 @@
     0 0 24px rgba(0, 123, 255, 0.4);
 }
 
-.form-buttons {
+.delete-form-buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;

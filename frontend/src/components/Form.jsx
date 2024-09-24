@@ -82,16 +82,16 @@ function Form({ route, method }) {
   return (
     <div className="full-page-wrapper">
       <form onSubmit={handleSubmit} className="form-container">
-        <h1>{name}</h1>
+        <h1 className="main-form-header">{name}</h1>
         <input
-          className="form-input"
+          className="main-form-input"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Username"
         />
         <input
-          className="form-input"
+          className="main-form-input"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -106,7 +106,7 @@ function Form({ route, method }) {
         {method === "login" ? (
           <>
             <div className="redirect-to-div">
-              <span>No account yet?</span>
+              <span className="span">No account yet?</span>
               <button
                 className="redirect-to-register"
                 onClick={() => navigate("/register")}
@@ -118,7 +118,7 @@ function Form({ route, method }) {
         ) : (
           <>
             <div className="redirect-to-div">
-              <span>Already have an account?</span>
+              <span className="span">Already have an account?</span>
               <button
                 className="redirect-to-login"
                 onClick={() => navigate("/login")}
