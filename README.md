@@ -76,8 +76,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-### About The Project
+<img width="1447" alt="Bildschirmfoto 2024-09-26 um 20 24 21" src="https://github.com/user-attachments/assets/5c20a174-cb32-4e2e-824c-8135fe02c35c">
 
+<hr/>
 This full-stack notes web application is designed as a comprehensive learning project aimed at deepening my understanding of full-stack development using modern technologies. The primary focus is to build a fully functional note-taking application with features like user authentication, note creation, deletion, and display, all while exploring various key aspects of both frontend and backend development.
 
 The project is built using **Python** and **Django** on the backend, leveraging **React.js** for the frontend. This combination of technologies provides a modern, scalable architecture and gives me the opportunity to explore the following critical concepts:
