@@ -15,6 +15,7 @@ function Home() {
   const [noteToDelete, setNoteToDelete] = useState(null);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [showFavorites, setShowFavorites] = useState(false);
 
   // get user name of currently logged in user
   useEffect(() => {
@@ -88,8 +89,10 @@ function Home() {
           alert("Oops, failed to edit this note.");
         }
       })
-      .catch((error) => alert("Oops! An error occurred."));
-    console.log(error);
+      .catch((error) => {
+        alert("Oops! An error occurred.");
+        console.log(error);
+      });
   };
 
   const openDeleteModal = (note) => {
@@ -107,10 +110,29 @@ function Home() {
     setSearchTerm(e.target.value);
   };
 
-  // Filter notes based on the search term
-  const filteredNotes = notes.filter((note) =>
-    note.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Use filteredNotes based on the showFavorites state
+  const filteredNotes = notes.filter((note) => {
+    const matchesSearch = note.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const isFavorite = showFavorites ? note.is_favorited : true;
+    return matchesSearch && isFavorite;
+  });
+
+  const updateNote = (updatedNote) => {
+    setNotes((prevNotes) =>
+      prevNotes.map((note) =>
+        note.id === updatedNote.id
+          ? { ...note, is_favorited: updatedNote.is_favorited }
+          : note
+      )
+    );
+  };
+
+  // handle filter button
+  const toggleFilter = () => {
+    setShowFavorites((prev) => !prev);
+  };
 
   const handleLogout = () => {
     window.location.href = "http://localhost:5173/logout";
@@ -124,7 +146,7 @@ function Home() {
         </div>
         <div className="dashboard-options-header">
           <div className="dashboard-filter-button-container">
-            <button className="dashboard-filter-button">
+            <button className="dashboard-filter-button" onClick={toggleFilter}>
               <span className="dashboard-filter-button-span">📚</span>
             </button>
           </div>
@@ -214,6 +236,7 @@ function Home() {
                       note={note}
                       onDelete={() => openDeleteModal(note)}
                       onEdit={() => openEditModal(note)}
+                      onUpdateNote={updateNote}
                     />
                   </li>
                 ))

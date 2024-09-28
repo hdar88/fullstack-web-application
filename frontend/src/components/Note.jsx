@@ -1,13 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import api from "../api";
 import "../styles/Note.css";
 
-function Note({ note, onDelete, onEdit }) {
+function Note({ note, onDelete, onEdit, onUpdateNote }) {
   const formattedDate = new Date(note.created_at).toLocaleDateString("de-DE");
-  const [isFavorited, setIsFavorited] = useState(false);
+  const [isFavorited, setIsFavorited] = useState(note.is_favorited);
 
-  // handle favourite tag of note
-  const toggleFavorite = () => {
-    setIsFavorited(!isFavorited);
+  // Function to toggle favorite status
+  const toggleFavorite = async () => {
+    try {
+      const response = await api.put(`/api/notes/favorite/${note.id}/`);
+      console.log(response.data);
+      setIsFavorited(response.data.is_favorited);
+      onUpdateNote(response.data);
+    } catch (error) {
+      console.error("Error updating favorite status:", error.response.data);
+    }
   };
 
   return (
