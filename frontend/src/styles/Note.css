@@ -76,3 +76,24 @@
   border-radius: 50%;
   font-size: 40px;
 }
+
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* styling for fav note tag */
+.note-fav-button {
+  font-size: 40px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.note-fav-button.favorited {
+  color: yellow;
+}
