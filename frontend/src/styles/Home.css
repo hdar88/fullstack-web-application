@@ -86,7 +86,7 @@ html {
   border: none;
   padding: 10px 15px;
   border-radius: none;
-  font-size: 1em;
+  font-size: 30px;
   box-shadow: none;
 }
 
@@ -100,6 +100,21 @@ html {
   margin-right: 0;
   margin-top: 0;
   margin-bottom: 5%;
+}
+
+.no-notes-found-div {
+  background-color: rgb(130, 162, 206);
+  margin-top: 20%;
+  margin-left: 30%;
+  width: 40%;
+  border-radius: 20px;
+  text-align: center;
+  padding: 20px;
+}
+
+.no-notes-found-span {
+  font-size: 70px;
+  color: white;
 }
 
 .create-note-button {
