@@ -21,8 +21,11 @@ function Note({ note, onDelete, onEdit }) {
           {isFavorited ? "⭐" : "☆"}
         </button>{" "}
       </div>
-      <p className="note-label">label tbd</p>
-      <p className="note-date">{formattedDate}</p>
+      <p className="note-content">{note.content}</p>
+      <div className="note-labels-container">
+        <p className="note-date">{formattedDate}</p>
+        <p className="note-label">label tbd</p>
+      </div>
       <div className="note-actions">
         <button className="edit-button" onClick={onEdit}>
           <span className="edit-button-span">✏️</span>

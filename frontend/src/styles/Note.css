@@ -23,24 +23,13 @@
   margin-bottom: 15px;
 }
 
-.note-date {
-  display: inline-block;
-  font-size: 0.9em;
-  color: #fff;
-  background-color: rgb(59, 77, 105);
-  padding: 5px 10px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  font-weight: bold;
-  text-align: center;
-}
-
 .note-actions {
   border-radius: 50%;
   border-color: transparent;
   display: flex;
   justify-content: flex-start;
   gap: 10px;
+  margin-left: 82%;
 }
 
 .edit-button,
@@ -86,14 +75,57 @@
 
 /* styling for fav note tag */
 .note-fav-button {
+  width: 90px;
+  height: 90px;
   font-size: 40px;
   background-color: transparent;
   border: none;
   color: white;
   cursor: pointer;
   transition: color 0.3s ease;
+  padding-right: 20px;
+  border: none;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
 }
 
+.note-fav-button:hover {
+  font-size: 60px;
+}
 .note-fav-button.favorited {
+  font-size: 50px;
   color: yellow;
+}
+
+/* styling for note labels container */
+.note-labels-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  margin-top: 30px;
+}
+.note-date {
+  display: inline-block;
+  font-size: 20px;
+  color: #fff;
+  background-color: rgb(59, 77, 105);
+  padding: 5px 10px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.note-label {
+  display: inline-block;
+  font-size: 20px;
+  color: #fff;
+  background-color: rgb(59, 77, 105);
+  padding: 5px 10px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
 }
