@@ -14,6 +14,7 @@ function Home() {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [noteToDelete, setNoteToDelete] = useState(null);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   // get user name of currently logged in user
   useEffect(() => {
@@ -81,8 +82,8 @@ function Home() {
       .then((res) => {
         if (res.status === 200) {
           alert("Yayy! Edited Note successfully!");
-          getNotes(); // Refresh the notes after update
-          closeEditModal(); // Close the modal after editing
+          getNotes();
+          closeEditModal();
         } else {
           alert("Oops, failed to edit this note.");
         }
@@ -100,6 +101,16 @@ function Home() {
     setIsDeleteModalOpen(false);
     setNoteToDelete(null);
   };
+
+  // Handle search input change
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  // Filter notes based on the search term
+  const filteredNotes = notes.filter((note) =>
+    note.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const handleLogout = () => {
     window.location.href = "http://localhost:5173/logout";
@@ -122,6 +133,8 @@ function Home() {
               type="text"
               className="dashboard-search-input-field"
               placeholder="Search..."
+              value={searchTerm}
+              onChange={handleSearch}
             />
             <span className="search-icon">🔎</span>
           </div>
@@ -194,15 +207,24 @@ function Home() {
 
           <div className="notes-list-container">
             <ul className="notes-list">
-              {notes.map((note) => (
-                <li key={note.id}>
-                  <Note
-                    note={note}
-                    onDelete={() => openDeleteModal(note)}
-                    onEdit={() => openEditModal(note)}
-                  />
-                </li>
-              ))}
+              {filteredNotes.length > 0 ? (
+                filteredNotes.map((note) => (
+                  <li key={note.id}>
+                    <Note
+                      note={note}
+                      onDelete={() => openDeleteModal(note)}
+                      onEdit={() => openEditModal(note)}
+                    />
+                  </li>
+                ))
+              ) : (
+                <div className="no-notes-found-div">
+                  <span className="no-notes-found-span">
+                    Oops!
+                    <br /> No notes found 🫠
+                  </span>
+                </div>
+              )}
             </ul>
 
             <CreateNoteModal
