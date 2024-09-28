@@ -223,6 +223,7 @@ html {
 .sidebar-logout-button {
   width: 90px;
   height: 90px;
+  margin-top: 90%;
   background-color: transparent;
   color: black;
   border: none;

@@ -55,4 +55,15 @@ class NoteEdit(generics.UpdateAPIView):
     
     def perform_update(self, serializer):
         serializer.save(author=self.request.user)
-     
+
+class ToggleFavoriteView(generics.UpdateAPIView):
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        return Note.objects.get(pk=self.kwargs['pk'], author=self.request.user)
+
+    def put(self, request, *args, **kwargs):
+        note = self.get_object()
+        note.is_favorited = not note.is_favorited  
+        note.save()
+        return Response(NoteSerializer(note).data)  
