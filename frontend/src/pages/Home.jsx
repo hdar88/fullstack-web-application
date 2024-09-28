@@ -16,6 +16,7 @@ function Home() {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [showFavorites, setShowFavorites] = useState(false);
+  const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
 
   // get user name of currently logged in user
   useEffect(() => {
@@ -110,6 +111,11 @@ function Home() {
     setSearchTerm(e.target.value);
   };
 
+  // handle filter menu visibility
+  const handleFilterMenuVisibility = () => {
+    setIsFilterMenuOpen((prev) => !prev);
+  };
+
   // Use filteredNotes based on the showFavorites state
   const filteredNotes = notes.filter((note) => {
     const matchesSearch = note.title
@@ -119,6 +125,7 @@ function Home() {
     return matchesSearch && isFavorite;
   });
 
+  // helper to update favorite status of note immediately
   const updateNote = (updatedNote) => {
     setNotes((prevNotes) =>
       prevNotes.map((note) =>
@@ -146,9 +153,29 @@ function Home() {
         </div>
         <div className="dashboard-options-header">
           <div className="dashboard-filter-button-container">
-            <button className="dashboard-filter-button" onClick={toggleFilter}>
-              <span className="dashboard-filter-button-span">📚</span>
+            <button className="dashboard-filter-button">
+              <span
+                className="dashboard-filter-button-span"
+                onClick={handleFilterMenuVisibility}
+              >
+                📚
+              </span>
             </button>
+            {isFilterMenuOpen && (
+              <div className="filter-menu-container">
+                <div className="filter-by-favorite">
+                  <span
+                    className="filter-by-favorite-span"
+                    onClick={toggleFilter}
+                  >
+                    ⭐️
+                  </span>
+                </div>
+                <div className="filter-by-label">
+                  <span className="filter-by-label-span">label</span>
+                </div>
+              </div>
+            )}
           </div>
           <div className="dashboard-search-container">
             <input

@@ -45,6 +45,7 @@ html {
   margin-left: 16%;
 }
 
+/* styling for filter menu */
 .dashboard-filter-button {
   width: 90px;
   height: 90px;
@@ -70,6 +71,39 @@ html {
   font-size: 40px;
 }
 
+.filter-menu-container {
+  background-color: rgb(87, 124, 173);
+  position: fixed;
+  margin-left: 30px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.filter-by-favorite,
+.filter-by-label {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.filter-by-favorite-span,
+.filter-by-label-span {
+  font-size: 32px;
+  display: block;
+  color: white;
+  padding: 8px;
+  transition: background-color 0.2s;
+}
+
+.filter-by-favorite-span:hover,
+.filter-by-label-span:hover {
+  background-color: #f0f0f0;
+}
+
+/* styling for search bar */
 .dashboard-search-container {
   display: flex;
   align-items: center;
