@@ -5,6 +5,7 @@ import api from "../api";
 function CreateNoteModal({ getNotes, toggleModal, isOpen }) {
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
+  const [label, setLabel] = useState("");
 
   const closeModal = () => {
     toggleModal(false);
@@ -22,12 +23,13 @@ function CreateNoteModal({ getNotes, toggleModal, isOpen }) {
   const createNote = (e) => {
     e.preventDefault();
     api
-      .post("/api/notes/", { content, title })
+      .post("/api/notes/", { content, title, label })
       .then((res) => {
         if (res.status === 201) {
           alert("Yayy! Created Note successfully!");
           setTitle("");
           setContent("");
+          setLabel("");
           closeModal();
           getNotes();
         } else {
@@ -66,6 +68,18 @@ function CreateNoteModal({ getNotes, toggleModal, isOpen }) {
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
               ></textarea>
+              <br />
+              <label htmlFor="label" className="create-form-labels">
+                <span className="create-form-labels-span"> add label </span>
+              </label>
+              <br />
+              <input
+                type="text"
+                id="label"
+                name="label"
+                onChange={(e) => setLabel(e.target.value)}
+                value={label}
+              />
               <br />
               <div className="create-form-buttons">
                 <button

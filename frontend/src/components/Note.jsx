@@ -32,7 +32,7 @@ function Note({ note, onDelete, onEdit, onUpdateNote }) {
       <p className="note-content">{note.content}</p>
       <div className="note-labels-container">
         <p className="note-date">{formattedDate}</p>
-        <p className="note-label">label tbd</p>
+        <p className="note-label">{note.label}</p>
       </div>
       <div className="note-actions">
         <button className="edit-button" onClick={onEdit}>
