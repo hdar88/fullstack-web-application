@@ -6,11 +6,13 @@ function CreateNoteModal({ getNotes, toggleModal, isOpen }) {
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
   const [label, setLabel] = useState("");
+  const [error, setError] = useState(null);
 
   const closeModal = () => {
     toggleModal(false);
     setTitle("");
     setContent("");
+    setError(null);
   };
 
   if (isOpen) {
@@ -22,6 +24,20 @@ function CreateNoteModal({ getNotes, toggleModal, isOpen }) {
   // create note and set author to currently logged in user
   const createNote = (e) => {
     e.preventDefault();
+    if (title.length > 100) {
+      setError("Oops! This title is too long");
+      return;
+    }
+    if (content.length > 500) {
+      setError("Oops! This content is too long");
+      return;
+    }
+    if (label.length > 10) {
+      setError("Oops! This label is too long");
+      return;
+    }
+
+    setError(null);
     api
       .post("/api/notes/", { content, title, label })
       .then((res) => {
@@ -81,6 +97,7 @@ function CreateNoteModal({ getNotes, toggleModal, isOpen }) {
                 value={label}
               />
               <br />
+              {error && <p className="error-message">{error}</p>}
               <div className="create-form-buttons">
                 <button
                   type="button"

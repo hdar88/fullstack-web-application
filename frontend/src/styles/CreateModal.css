@@ -90,31 +90,6 @@ input[type="submit"]:hover {
   background-color: #ea7b7b;
 }
 
-.create-button {
-  width: 60px;
-  height: 60px;
-  padding: 0;
-  margin-left: 90%;
-  margin-right: 0;
-  background-color: rgb(130, 162, 206);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32px;
-  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out,
-    box-shadow 0.2s ease-in-out;
-}
-
-.create-button:hover {
-  background-color: rgb(93, 138, 201);
-  transform: scale(1.1);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-}
-
-.create-button-span {
-  font-size: 55px;
+.error-message {
+  font-size: 24px;
 }

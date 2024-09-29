@@ -42,7 +42,7 @@ html {
   padding: 0 20px;
   width: auto;
   gap: 30px;
-  margin-left: 16%;
+  margin-left: 10%;
 }
 
 /* styling for filter menu */
@@ -154,6 +154,7 @@ html {
 .create-note-button {
   width: 90px;
   height: 90px;
+  margin-left: 30px;
   background-color: rgb(130, 162, 206);
   border: none;
   border-radius: 50%;
