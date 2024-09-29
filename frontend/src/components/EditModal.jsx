@@ -4,12 +4,14 @@ import "../styles/EditModal.css";
 function EditNoteModal({ isOpen, note, onClose, onUpdate }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [label, setLabel] = useState("");
 
   // Populate modal with note data when the modal is opened
   useEffect(() => {
     if (note) {
       setTitle(note.title);
       setContent(note.content);
+      setLabel(note.label);
     }
   }, [note]);
 
@@ -20,6 +22,7 @@ function EditNoteModal({ isOpen, note, onClose, onUpdate }) {
     const updatedNote = {
       title,
       content,
+      label,
     };
     onUpdate(note.id, updatedNote);
     onClose();
@@ -64,6 +67,18 @@ function EditNoteModal({ isOpen, note, onClose, onUpdate }) {
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
               ></textarea>
+              <br />
+              <label htmlFor="label" className="create-form-labels">
+                <span className="create-form-labels-span"> 🏷️ </span>
+              </label>
+              <br />
+              <input
+                type="text"
+                id="label"
+                name="label"
+                onChange={(e) => setLabel(e.target.value)}
+                value={label}
+              />
               <br />
               <div className="edit-form-buttons">
                 <button

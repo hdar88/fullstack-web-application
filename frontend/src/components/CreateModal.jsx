@@ -70,7 +70,7 @@ function CreateNoteModal({ getNotes, toggleModal, isOpen }) {
               ></textarea>
               <br />
               <label htmlFor="label" className="create-form-labels">
-                <span className="create-form-labels-span"> add label </span>
+                <span className="create-form-labels-span"> 🏷️ </span>
               </label>
               <br />
               <input
