@@ -100,7 +100,22 @@ html {
 
 .filter-by-favorite-span:hover,
 .filter-by-label-span:hover {
-  background-color: #f0f0f0;
+  border-radius: 50px;
+  background-color: rgb(190, 216, 255);
+}
+
+/* styling for dashboard label search */
+.dashboard-label-search-container {
+  background-color: rgb(87, 124, 173);
+  margin-left: 220px;
+}
+
+.dashboard-label-search {
+  font-size: 32px;
+  padding: 8px;
+  border-radius: 50px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 /* styling for search bar */
