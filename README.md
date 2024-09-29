@@ -83,21 +83,29 @@ This full-stack notes web application is designed as a comprehensive learning pr
 
 The project is built using **Python** and **Django** on the backend, leveraging **React.js** for the frontend. This combination of technologies provides a modern, scalable architecture and gives me the opportunity to explore the following critical concepts:
 
-- **Backend Development with Django**: I explore core backend development practices using Python's Django framework. This includes designing REST APIs, handling HTTP requests, interacting with a database, and managing models, views, and URL routing. The backend is also responsible for authentication and authorization of users, using secure methods like JWT or session management.
+- **Backend Development with Django**:    <br /> 
+ I explore core backend development practices using Python's Django framework. This includes designing REST APIs, handling HTTP requests, interacting with a database, and managing models, views, and URL routing. The backend is also responsible for authentication and authorization of users, using secure methods like JWT or session management.
   
-- **Frontend Development with React.js**: The frontend is built with React.js, a powerful JavaScript library for building user interfaces. React provides the flexibility to create dynamic, responsive UI components that interact with the backend API in real-time. Handling state management, form submission, and user interaction are key components of this part of the project.
+- **Frontend Development with React.js**:     <br /> 
+The frontend is built with React.js, a powerful JavaScript library for building user interfaces. React provides the flexibility to create dynamic, responsive UI components that interact with the backend API in real-time. Handling state management, form submission, and user interaction are key components of this part of the project.
   
-- **Database Integration**: The backend uses a relational database like **PostgreSQL** to store and manage data. I learn about database design, querying, migrations, and how Django integrates with databases through its ORM (Object-Relational Mapping) system.
+- **Database Integration**:    <br /> 
+ The backend uses a relational database like **PostgreSQL** to store and manage data. I learn about database design, querying, migrations, and how Django integrates with databases through its ORM (Object-Relational Mapping) system.
 
-- **User Authentication and Authorization**: A critical feature in any web application is ensuring secure user authentication and role-based authorization. This project implements login and registration systems, along with protecting routes based on user roles and permissions.
+- **User Authentication and Authorization**:     <br /> 
+ A critical feature in any web application is ensuring secure user authentication and role-based authorization. This project implements login and registration systems, along with protecting routes based on user roles and permissions.
 
-- **GitHub Actions and CI/CD Workflows**: To automate deployment and testing processes, I integrate **GitHub Actions** into the project. This explores how continuous integration (CI) and continuous deployment (CD) workflows help in maintaining code quality, running tests automatically, and ensuring smooth deployment.
+- **GitHub Actions and CI/CD Workflows**:     <br /> 
+To automate deployment and testing processes, I integrate **GitHub Actions** into the project. This explores how continuous integration (CI) and continuous deployment (CD) workflows help in maintaining code quality, running tests automatically, and ensuring smooth deployment.
 
-- **Routing and URL Handling**: On both the frontend and backend, routing plays a key role in navigation. In React, I use **React Router** to handle navigation between different views of the application (like the notes page, login, and registration). On the backend, Django handles URL routing and maps HTTP requests to appropriate views.
+- **Routing and URL Handling**:     <br /> 
+On both the frontend and backend, routing plays a key role in navigation. In React, I use **React Router** to handle navigation between different views of the application (like the notes page, login, and registration). On the backend, Django handles URL routing and maps HTTP requests to appropriate views.
 
-- **State Management**: Managing the state of the application, particularly for dynamic elements like form submissions, user sessions, and notes, is crucial. In React, I utilize the `useState` and `useEffect` hooks, providing a deeper understanding of how to manage state effectively in modern applications.
+- **State Management**:     <br /> 
+Managing the state of the application, particularly for dynamic elements like form submissions, user sessions, and notes, is crucial. In React, I utilize the `useState` and `useEffect` hooks, providing a deeper understanding of how to manage state effectively in modern applications.
 
-- **Security Best Practices**: The project incorporates security features like data validation, secure password storage, and prevention of common vulnerabilities (like XSS and CSRF attacks). Learning security best practices is essential in ensuring that the application is robust and secure for users.
+- **Security Best Practices**:     <br /> 
+The project incorporates security features like data validation, secure password storage, and prevention of common vulnerabilities (like XSS and CSRF attacks). Learning security best practices is essential in ensuring that the application is robust and secure for users.
 
 By building this project, I aim to enhance my skills in full-stack development and gain hands-on experience with real-world development workflows. It covers a broad range of modern development topics and serves as a stepping stone toward building more complex and scalable applications.
 
