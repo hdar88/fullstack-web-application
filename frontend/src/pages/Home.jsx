@@ -164,6 +164,14 @@ function Home() {
     filterByLabel(labelSearch);
   };
 
+  // function to clear all filters
+  const clearAllFilters = () => {
+    setSearchTerm("");
+    setLabelSearch("");
+    setShowFavorites(false);
+    setIsFilterMenuOpen(false);
+  };
+
   const handleLogout = () => {
     window.location.href = "http://localhost:5173/logout";
   };
@@ -213,6 +221,12 @@ function Home() {
                       </form>
                     </div>
                   )}
+                  <button
+                    className="clear-filters-dashboard-button"
+                    onClick={clearAllFilters}
+                  >
+                    Clear all filters
+                  </button>
                 </div>
               </div>
             )}
