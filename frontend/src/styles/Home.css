@@ -42,7 +42,25 @@ html {
   padding: 0 20px;
   width: auto;
   gap: 30px;
-  margin-left: 16%;
+  margin-left: 10%;
+}
+
+/* Dark mode for dashboard background */
+body.dark-mode,
+html.dark-mode,
+body.dark-mode .home-container,
+body.dark-mode .dashboard-header-container {
+  background-color: rgb(51, 63, 100);
+  color: white;
+}
+
+/* Dark mode for dashboard foreground components */
+body.dark-mode .dashboard-sidebar,
+body.dark-mode .dashboard-search-container,
+body.dark-mode .create-note-button,
+body.dark-mode .dashboard-filter-button {
+  background-color: rgb(44, 51, 70);
+  color: white;
 }
 
 /* styling for filter menu */
@@ -100,7 +118,39 @@ html {
 
 .filter-by-favorite-span:hover,
 .filter-by-label-span:hover {
-  background-color: #f0f0f0;
+  border-radius: 50px;
+  background-color: rgb(190, 216, 255);
+}
+
+.clear-filters-dashboard-button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 24px;
+}
+
+.clear-filters-dashboard-button:hover {
+  background-color: rgb(190, 216, 255);
+  color: rgb(87, 124, 173);
+  border-radius: 50px;
+}
+
+/* styling for dashboard label search */
+.dashboard-label-search-container {
+  background-color: rgb(87, 124, 173);
+  margin-left: 220px;
+}
+
+.dashboard-label-search {
+  font-size: 32px;
+  padding: 8px;
+  border-radius: 50px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 /* styling for search bar */
@@ -154,6 +204,7 @@ html {
 .create-note-button {
   width: 90px;
   height: 90px;
+  margin-left: 30px;
   background-color: rgb(130, 162, 206);
   border: none;
   border-radius: 50%;
@@ -254,7 +305,8 @@ html {
 .sidebar-home-button,
 .sidebar-pinned-button,
 .sidebar-archive-button,
-.sidebar-logout-button {
+.sidebar-logout-button,
+.sidebar-darkmode-button {
   width: 90px;
   height: 90px;
   margin-top: 90%;
@@ -275,7 +327,8 @@ html {
 .sidebar-home-button:hover,
 .sidebar-pinned-button:hover,
 .sidebar-archive-button:hover,
-.sidebar-logout-button:hover {
+.sidebar-logout-button:hover,
+.sidebar-darkmode-button:hover {
   background-color: transparent;
   transform: scale(1.1);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
@@ -286,7 +339,8 @@ html {
 .sidebar-archive-button-span,
 .sidebar-settings-button-span,
 .sidebar-help-button-span,
-.sidebar-logout-button-span {
+.sidebar-logout-button-span,
+.sidebar-darkmode-button-span {
   width: 85px;
   height: 85px;
   font-size: 48px;

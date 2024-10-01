@@ -4,12 +4,15 @@ import "../styles/EditModal.css";
 function EditNoteModal({ isOpen, note, onClose, onUpdate }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [label, setLabel] = useState("");
+  const [error, setError] = useState(null);
 
   // Populate modal with note data when the modal is opened
   useEffect(() => {
     if (note) {
       setTitle(note.title);
       setContent(note.content);
+      setLabel(note.label);
     }
   }, [note]);
 
@@ -17,9 +20,24 @@ function EditNoteModal({ isOpen, note, onClose, onUpdate }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (title.length > 100) {
+      setError("Oops! This title is too long");
+      return;
+    }
+    if (content.length > 500) {
+      setError("Oops! This content is too long");
+      return;
+    }
+    if (label.length > 10) {
+      setError("Oops! This label is too long");
+      return;
+    }
+
+    setError(null);
     const updatedNote = {
       title,
       content,
+      label,
     };
     onUpdate(note.id, updatedNote);
     onClose();
@@ -65,6 +83,19 @@ function EditNoteModal({ isOpen, note, onClose, onUpdate }) {
                 onChange={(e) => setContent(e.target.value)}
               ></textarea>
               <br />
+              <label htmlFor="label" className="create-form-labels">
+                <span className="create-form-labels-span"> 🏷️ </span>
+              </label>
+              <br />
+              <input
+                type="text"
+                id="label"
+                name="label"
+                onChange={(e) => setLabel(e.target.value)}
+                value={label}
+              />
+              <br />
+              {error && <p className="error-message">{error}</p>}
               <div className="edit-form-buttons">
                 <button
                   type="button"

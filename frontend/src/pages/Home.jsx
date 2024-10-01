@@ -17,6 +17,9 @@ function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [showFavorites, setShowFavorites] = useState(false);
   const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
+  const [isLabelSearchOpen, setIsLabelSearchOpen] = useState(false);
+  const [labelSearch, setLabelSearch] = useState("");
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   // get user name of currently logged in user
   useEffect(() => {
@@ -122,7 +125,12 @@ function Home() {
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
     const isFavorite = showFavorites ? note.is_favorited : true;
-    return matchesSearch && isFavorite;
+    const matchesLabel = labelSearch
+      ? note.label &&
+        note.label.toLowerCase().includes(labelSearch.toLowerCase())
+      : true;
+
+    return matchesSearch && isFavorite && matchesLabel;
   });
 
   // helper to update favorite status of note immediately
@@ -137,8 +145,47 @@ function Home() {
   };
 
   // handle filter button
-  const toggleFilter = () => {
+  const filterByFavorite = () => {
     setShowFavorites((prev) => !prev);
+  };
+
+  // handle filter button
+  const handleLabelSearchVisibility = () => {
+    setIsLabelSearchOpen((prev) => !prev);
+  };
+
+  // Function to filter notes by label
+  const filterByLabel = (label) => {
+    setLabelSearch(label);
+  };
+
+  // Handle label search submit
+  const handleLabelSearchSubmit = (e) => {
+    e.preventDefault();
+    filterByLabel(labelSearch);
+  };
+
+  // function to clear all filters
+  const clearAllFilters = () => {
+    setSearchTerm("");
+    setLabelSearch("");
+    setShowFavorites(false);
+    setIsFilterMenuOpen(false);
+  };
+
+  // function to toggle dark mode
+  const toggleDarkMode = () => {
+    const body = document.body;
+    const darkModeIcon = document.getElementById("darkmode-icon");
+
+    body.classList.toggle("dark-mode");
+    setIsDarkMode(!isDarkMode);
+
+    if (body.classList.contains("dark-mode")) {
+      darkModeIcon.textContent = "🌙";
+    } else {
+      darkModeIcon.textContent = "🌒";
+    }
   };
 
   const handleLogout = () => {
@@ -166,13 +213,36 @@ function Home() {
                 <div className="filter-by-favorite">
                   <span
                     className="filter-by-favorite-span"
-                    onClick={toggleFilter}
+                    onClick={filterByFavorite}
                   >
                     ⭐️
                   </span>
                 </div>
                 <div className="filter-by-label">
-                  <span className="filter-by-label-span">label</span>
+                  <span
+                    className="filter-by-label-span"
+                    onClick={handleLabelSearchVisibility}
+                  >
+                    🏷️
+                  </span>
+                  {isLabelSearchOpen && (
+                    <div className="dashboard-label-search-container">
+                      <form onSubmit={handleLabelSearchSubmit}>
+                        <input
+                          className="dashboard-label-search"
+                          placeholder="Search for label..."
+                          value={labelSearch}
+                          onChange={(e) => setLabelSearch(e.target.value)}
+                        />
+                      </form>
+                    </div>
+                  )}
+                  <button
+                    className="clear-filters-dashboard-button"
+                    onClick={clearAllFilters}
+                  >
+                    Clear all filters
+                  </button>
                 </div>
               </div>
             )}
@@ -220,25 +290,30 @@ function Home() {
               </nav>
               <br />
               <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
               <hr />
               <nav>
                 <ul>
                   <li>
-                    <button className="sidebar-settings-button">
-                      <span className="sidebar-settings-button-span">⚙️</span>
+                    <button className="sidebar-help-button">
+                      <span className="sidebar-help-button-span">❓</span>
                     </button>
                   </li>
                   <li>
-                    <button className="sidebar-help-button">
-                      <span className="sidebar-help-button-span">❓</span>
+                    <button
+                      className="sidebar-darkmode-button"
+                      onClick={toggleDarkMode}
+                    >
+                      <span
+                        id="darkmode-icon"
+                        className="sidebar-darkmode-button-span"
+                      >
+                        🌒
+                      </span>
+                    </button>
+                  </li>
+                  <li>
+                    <button className="sidebar-settings-button">
+                      <span className="sidebar-settings-button-span">⚙️</span>
                     </button>
                   </li>
                   <li>

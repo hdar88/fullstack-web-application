@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
@@ -15,49 +15,59 @@
 .edit-modal-content {
   background-color: rgb(87, 124, 173);
   padding: 20px;
-  border-radius: 50px;
+  border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  max-width: 500px;
-  width: 90%;
+  max-width: 800px;
+  max-height: 800px;
+  width: 800px;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.edit-modal-content form {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
 }
 
 .edit-form-labels-span {
   background-color: transparent;
-  color: black;
+  color: white;
   margin-top: 10px;
   font-size: 48px;
 }
 
 input[type="text"],
 textarea {
-  color: white;
-  width: 95%;
+  background-color: transparent;
+  width: 100%;
+  height: 50px;
+  font-size: 32px;
   padding: 8px;
   margin: 8px 0 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 150px;
+  max-height: 300px;
 }
 
 .edit-form-buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: auto;
 }
 
-input[type="submit"] {
-  background-color: transparent;
-  color: white;
-  padding: 15px;
-  border-radius: 8px;
-  font-size: 24px;
-  text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  border: none;
-  width: 48%;
-}
-
+input[type="submit"],
 .close-edit-modal-button {
   background-color: transparent;
   color: white;
@@ -71,10 +81,13 @@ input[type="submit"] {
   width: 48%;
 }
 
+.edit-form-labels-span {
+  font-size: 60px;
+}
+
 input[type="submit"]:hover {
   background-color: rgb(115, 238, 115);
 }
-
-.close-edit-modal-button:hover {
+s .close-edit-modal-button:hover {
   background-color: #ea7b7b;
 }
