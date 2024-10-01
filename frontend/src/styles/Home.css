@@ -104,6 +104,23 @@ html {
   background-color: rgb(190, 216, 255);
 }
 
+.clear-filters-dashboard-button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 24px;
+}
+
+.clear-filters-dashboard-button:hover {
+  background-color: rgb(190, 216, 255);
+  color: rgb(87, 124, 173);
+  border-radius: 50px;
+}
+
 /* styling for dashboard label search */
 .dashboard-label-search-container {
   background-color: rgb(87, 124, 173);
