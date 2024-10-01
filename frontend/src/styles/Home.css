@@ -45,6 +45,24 @@ html {
   margin-left: 10%;
 }
 
+/* Dark mode for dashboard background */
+body.dark-mode,
+html.dark-mode,
+body.dark-mode .home-container,
+body.dark-mode .dashboard-header-container {
+  background-color: rgb(51, 63, 100);
+  color: white;
+}
+
+/* Dark mode for dashboard foreground components */
+body.dark-mode .dashboard-sidebar,
+body.dark-mode .dashboard-search-container,
+body.dark-mode .create-note-button,
+body.dark-mode .dashboard-filter-button {
+  background-color: rgb(44, 51, 70);
+  color: white;
+}
+
 /* styling for filter menu */
 .dashboard-filter-button {
   width: 90px;

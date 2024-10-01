@@ -19,6 +19,7 @@ function Home() {
   const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
   const [isLabelSearchOpen, setIsLabelSearchOpen] = useState(false);
   const [labelSearch, setLabelSearch] = useState("");
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   // get user name of currently logged in user
   useEffect(() => {
@@ -172,6 +173,21 @@ function Home() {
     setIsFilterMenuOpen(false);
   };
 
+  // function to toggle dark mode
+  const toggleDarkMode = () => {
+    const body = document.body;
+    const darkModeIcon = document.getElementById("darkmode-icon");
+
+    body.classList.toggle("dark-mode");
+    setIsDarkMode(!isDarkMode);
+
+    if (body.classList.contains("dark-mode")) {
+      darkModeIcon.textContent = "🌙";
+    } else {
+      darkModeIcon.textContent = "🌒";
+    }
+  };
+
   const handleLogout = () => {
     window.location.href = "http://localhost:5173/logout";
   };
@@ -283,8 +299,16 @@ function Home() {
                     </button>
                   </li>
                   <li>
-                    <button className="sidebar-darkmode-button">
-                      <span className="sidebar-darkmode-button-span">🌒</span>
+                    <button
+                      className="sidebar-darkmode-button"
+                      onClick={toggleDarkMode}
+                    >
+                      <span
+                        id="darkmode-icon"
+                        className="sidebar-darkmode-button-span"
+                      >
+                        🌒
+                      </span>
                     </button>
                   </li>
                   <li>
