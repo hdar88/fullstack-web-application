@@ -287,7 +287,8 @@ html {
 .sidebar-home-button,
 .sidebar-pinned-button,
 .sidebar-archive-button,
-.sidebar-logout-button {
+.sidebar-logout-button,
+.sidebar-darkmode-button {
   width: 90px;
   height: 90px;
   margin-top: 90%;
@@ -308,7 +309,8 @@ html {
 .sidebar-home-button:hover,
 .sidebar-pinned-button:hover,
 .sidebar-archive-button:hover,
-.sidebar-logout-button:hover {
+.sidebar-logout-button:hover,
+.sidebar-darkmode-button:hover {
   background-color: transparent;
   transform: scale(1.1);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
@@ -319,7 +321,8 @@ html {
 .sidebar-archive-button-span,
 .sidebar-settings-button-span,
 .sidebar-help-button-span,
-.sidebar-logout-button-span {
+.sidebar-logout-button-span,
+.sidebar-darkmode-button-span {
   width: 85px;
   height: 85px;
   font-size: 48px;

@@ -274,25 +274,22 @@ function Home() {
               </nav>
               <br />
               <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
               <hr />
               <nav>
                 <ul>
                   <li>
-                    <button className="sidebar-settings-button">
-                      <span className="sidebar-settings-button-span">⚙️</span>
+                    <button className="sidebar-help-button">
+                      <span className="sidebar-help-button-span">❓</span>
                     </button>
                   </li>
                   <li>
-                    <button className="sidebar-help-button">
-                      <span className="sidebar-help-button-span">❓</span>
+                    <button className="sidebar-darkmode-button">
+                      <span className="sidebar-darkmode-button-span">🌒</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button className="sidebar-settings-button">
+                      <span className="sidebar-settings-button-span">⚙️</span>
                     </button>
                   </li>
                   <li>
