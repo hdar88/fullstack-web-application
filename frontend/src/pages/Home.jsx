@@ -5,6 +5,7 @@ import "../styles/Home.css";
 import CreateNoteModal from "../components/CreateModal";
 import EditNoteModal from "../components/EditModal";
 import DeleteNoteModal from "../components/DeleteModal";
+import LogoutConfirmModal from "../components/LogoutConfirmModal";
 
 function Home() {
   const [notes, setNotes] = useState([]);
@@ -19,7 +20,11 @@ function Home() {
   const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
   const [isLabelSearchOpen, setIsLabelSearchOpen] = useState(false);
   const [labelSearch, setLabelSearch] = useState("");
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const storedTheme = localStorage.getItem("darkMode");
+    return storedTheme === "true";
+  });
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
   // get user name of currently logged in user
   useEffect(() => {
@@ -173,23 +178,33 @@ function Home() {
     setIsFilterMenuOpen(false);
   };
 
-  // function to toggle dark mode
-  const toggleDarkMode = () => {
+  // updating theme mode from local storage
+  useEffect(() => {
     const body = document.body;
     const darkModeIcon = document.getElementById("darkmode-icon");
 
-    body.classList.toggle("dark-mode");
-    setIsDarkMode(!isDarkMode);
-
-    if (body.classList.contains("dark-mode")) {
+    if (isDarkMode) {
+      body.classList.add("dark-mode");
       darkModeIcon.textContent = "🌙";
     } else {
+      body.classList.remove("dark-mode");
       darkModeIcon.textContent = "🌒";
     }
+
+    localStorage.setItem("darkMode", isDarkMode);
+    console.log(localStorage.getItem("darkMode"));
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode((prevMode) => !prevMode);
   };
 
-  const handleLogout = () => {
-    window.location.href = "http://localhost:5173/logout";
+  const openLogoutModal = () => {
+    setIsLogoutModalOpen(true);
+  };
+
+  const closeLogoutModal = () => {
+    setIsLogoutModalOpen(false);
   };
 
   return (
@@ -319,7 +334,7 @@ function Home() {
                   <li>
                     <button
                       className="sidebar-logout-button"
-                      onClick={handleLogout}
+                      onClick={openLogoutModal}
                     >
                       <span className="sidebar-logout-button-span">🚪</span>
                     </button>
@@ -378,6 +393,12 @@ function Home() {
           </div>
         </div>
       </div>
+      {isLogoutModalOpen && (
+        <LogoutConfirmModal
+          isOpen={isLogoutModalOpen}
+          onClose={closeLogoutModal}
+        />
+      )}
     </div>
   );
 }
