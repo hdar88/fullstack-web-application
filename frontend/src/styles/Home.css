@@ -46,8 +46,8 @@ html {
 }
 
 /* Dark mode for dashboard background */
-body.dark-mode,
 html.dark-mode,
+body.dark-mode,
 body.dark-mode .home-container,
 body.dark-mode .dashboard-header-container {
   background-color: rgb(51, 63, 100);
